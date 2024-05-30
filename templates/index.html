@@ -6,12 +6,26 @@
       <tr>
         <th>Roll No.</th>
         <th>Name</th>
+        <th>Gender</th>
+        <th>Grade</th>
+        <th>Section</th>
+        <th>Birth</th>
       </tr>
     </div>
+    {% for student in students %}
     <tr class="mb-3">
-      <td>13549</td>
-      <td>Muhammad Shumaet Bukhari</td>
+      <td>{{ student["id"] }}</td>
+      <td>{{ student["full_name"] }}</td>
+      {% if student["male"] %}
+      <td>Male</td>
+      {% else %}
+      <td>Female</td>
+      {% endif %}
+      <td>{{ student["grade"] }}</td>
+      <td>{{ student["section"] }}</td>
+      <td>{{ student["birth"] }}</td>
     </tr>
+    {% endfor %}
   </thead>
 </table>
 {% endblock %}
