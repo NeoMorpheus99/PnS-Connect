@@ -1,0 +1,11 @@
+{% extends "layout.html" %} {% block title %} Apology {% endblock %} {% block
+main %}
+<!-- https://memegen.link/ -->
+<!-- https://knowyourmeme.com/memes/grumpy-cat -->
+<img
+  alt="{{ top }}"
+  class="border img-fluid"
+  src="https://api.memegen.link/images/custom/{{ top | urlencode }}/{{ bottom | urlencode }}.jpg?background=https://images.squarespace-cdn.com/content/v1/5d39e718d8ec690001509614/1566158583998-1H5N6NG82JAK4ZYL66GX/1-25-2016-4-26-08-PM-1038x576.png&width=1000"
+  title="{{ top }}"
+/>
+{% endblock %}
