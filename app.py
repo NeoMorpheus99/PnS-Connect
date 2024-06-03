@@ -96,3 +96,37 @@ def register():
             return apology("The Username was already taken!", 400)
 
         return redirect("/")
+
+
+@app.route("/reset-password", methods=["GET", "POST"])
+@login_required
+def reset_password():
+    """Reset password"""
+    if request.method == "GET":
+        return render_template("reset-password.html")
+
+    else:
+        old_password = request.form.get("old-password")
+        new_password = request.form.get("new-password")
+
+        # Ensure old-password was submitted
+        if not old_password:
+            return apology("must provide old password", 403)
+
+        # Ensure new-password was submitted
+        elif not new_password:
+            return apology("must provide new password", 403)
+
+        # Query database for old-password
+        rows = db.execute(
+            "SELECT * FROM users WHERE id = ?", session["user_id"]
+        )
+
+        # Ensure old-password is correct
+        if not check_password_hash(rows[0]["pass"], old_password):
+            return apology("invalid old password", 403)
+
+        db.execute("UPDATE users SET pass = ? WHERE id = ?",
+                   generate_password_hash(new_password), session["user_id"])
+
+        return redirect("/")
