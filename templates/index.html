@@ -9,10 +9,10 @@
         <th>Gender</th>
         <th>Grade</th>
         <th>Section</th>
-        <th>Birth</th>
+        <th>Age</th>
       </tr>
     </div>
-    {% for student in students %}
+    {% for student, age in stuff %}
     <tr class="mb-3">
       <td>{{ student["id"] }}</td>
       <td>{{ student["full_name"] }}</td>
@@ -23,7 +23,7 @@
       {% endif %}
       <td>{{ student["grade"] }}</td>
       <td>{{ student["section"] }}</td>
-      <td>{{ student["birth"] }}</td>
+      <td>{{ age }}</td>
     </tr>
     {% endfor %}
   </thead>
