@@ -3,6 +3,8 @@ from flask_session import Session
 from helpers import login_required, apology
 from werkzeug.security import check_password_hash, generate_password_hash
 from sql import SQL
+from datetime import datetime, date
+import itertools
 
 app = Flask(__name__)
 app.debug = True
@@ -29,8 +31,13 @@ def after_request(response):
 def index():
     id = session["user_id"]
     students = db.execute("SELECT * FROM students WHERE parent_id = ?", id)
+    ages = []
+    today = date.today()
+    for student in students:
+        birth = datetime.strptime(student["birth"], "%Y-%m-%d").date()
+        ages.append(round((today - birth).days / 365, 3))
 
-    return render_template("index.html", students=students)
+    return render_template("index.html", stuff=zip(students, ages))
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -130,3 +137,22 @@ def reset_password():
                    generate_password_hash(new_password), session["user_id"])
 
         return redirect("/")
+
+
+@app.route("/children", methods=["GET"])
+@login_required
+def children():
+    """Show children"""
+    id = session["user_id"]
+    students = db.execute("SELECT * FROM students WHERE parent_id = ?", id)
+    ages = []
+    today = date.today()
+    for student in students:
+        birth = datetime.strptime(student["birth"], "%Y-%m-%d").date()
+        ages.append(round((today - birth).days / 365, 3))
+
+    return render_template("children.html", children=zip(students, ages))
+
+
+if __name__ == "__main__":
+    app.run(debug=True)

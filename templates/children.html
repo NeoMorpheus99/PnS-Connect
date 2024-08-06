@@ -1,0 +1,28 @@
+{% extends "layout.html" %} {% block title %} Children {% endblock %} {% block
+main %}
+<h1>Children</h1>
+
+<div class="row">
+  {% for child, age in children %}
+
+  <div class="card col-3" style="width: 35%; margin: auto">
+    <img
+      class="card-img-top"
+      src="static/matpat.png"
+      alt="Card image"
+      style="max-width: 100%"
+    />
+    <div class="card-body">
+      <h4 class="card-title">{{ child["full_name"] }}</h4>
+      <div class="card-text row">
+        <div class="col-6">Grade: {{ child["grade"] }}</div>
+        <div class="col-6">Section: {{ child["section"] }}</div>
+      </div>
+      <a href="#" class="btn btn-primary">See Profile</a>
+    </div>
+  </div>
+
+  {% endfor %}
+</div>
+
+{% endblock %}

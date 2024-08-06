@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 
-<html lang="en">
+<html lang="en"
+{% if session["mode"] == "dark" %}
+ data-bs-theme="dark"
+{% else %}
+ data-bs-theme="light"
+{% endif %}
+>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, width=device-width" />
@@ -26,8 +32,16 @@
     <title>PnS Connect: {% block title %}{% endblock %}</title>
   </head>
 
+  <script>
+    function change_mode() {
+      const html = document.querySelector("html");
+      const current_mode = html.getAttribute("data-bs-theme");
+      const new_mode = current_mode === "dark" ? "light" : "dark";
+      html.setAttribute("data-bs-theme", new_mode);
+    }
+  </script>
   <body>
-    <nav class="bg-light border navbar navbar-expand-md navbar-light">
+    <nav class="border navbar navbar-expand-md navbar-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="/"
           ><span class="blue">P</span><span class="red">&</span
@@ -48,18 +62,18 @@
           {% if session["user_id"] %}
           <ul class="navbar-nav me-auto mt-2">
             <li class="nav-item">
-              <a class="nav-link" href="/quote">Quote</a>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="/buy">Buy</a></li>
-            <li class="nav-item"><a class="nav-link" href="/sell">Sell</a></li>
-            <li class="nav-item">
-              <a class="nav-link" href="/history">History</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/add">Add Cash</a>
+              <a class="nav-link" href="/children">Children</a>
             </li>
           </ul>
           <ul class="navbar-nav ms-auto mt-2">
+            <li class="nav-item form-check form-switch mx-4">
+              <input
+              class="form-check-input p-2"
+              type="checkbox"
+              role="switch"
+              id="f1exSwitchCheckChecked"
+              onclick="change_mode()"/>
+              </li>
             <li class="nav-item">
               <a class="nav-link" href="/logout">Log Out</a>
             </li>
