@@ -35,4 +35,4 @@ You can do a number of things here:
 
 ### Contributing
 
-Please read the [Contributing Guidlines](https://github.com/genius-raptor/blob/master/CONTRIBUTING.md)
+Please read the [Contributing Guidlines](https://github.com/Genius-Raptor/PnS-Connect/blob/master/CONTRIBUTING.md)
