@@ -82,7 +82,7 @@
               role="switch"
               id="f1exSwitchCheckChecked"
               onclick="change_mode()"/>
-              </li>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="/logout">Log Out</a>
             </li>
@@ -92,6 +92,14 @@
           </ul>
           {% else %}
           <ul class="navbar-nav ms-auto mt-2">
+           <li class="nav-item form-check form-switch mx-4">
+              <input
+              class="form-check-input p-2"
+              type="checkbox"
+              role="switch"
+              id="f1exSwitchCheckChecked"
+              onclick="change_mode()"/>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="/register">Register</a>
             </li>
