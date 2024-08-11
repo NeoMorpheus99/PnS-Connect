@@ -14,3 +14,23 @@ nav .navbar-brand .red {
 nav .navbar-brand .yellow {
   color: #f5b82e;
 }
+
+/*dark mode style */
+.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.dark-mode a {
+    color: #bb86fc;
+}
+
+/* additional dark mode styles for other element*/
+.dark-mode .navbar {
+    background-color: #333;
+}
+
+.dark-mode .card {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
