@@ -38,7 +38,16 @@
       const current_mode = html.getAttribute("data-bs-theme");
       const new_mode = current_mode === "dark" ? "light" : "dark";
       html.setAttribute("data-bs-theme", new_mode);
+      localStorage.setItem('theme', new_mode);
     }
+   
+  window.onload = function() {
+    const saved_mode = localStorage.getItem('theme');
+    if (saved_mode) {
+      document.querySelector("html").setAttribute("data-bs-theme", saved_mode);
+      document.getElementById("f1exSwitchCheckChecked").checked = (saved_mode === "dark");
+    }
+  }
   </script>
   <body>
     <nav class="border navbar navbar-expand-md navbar-light">
