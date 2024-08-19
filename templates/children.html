@@ -4,8 +4,8 @@ main %}
 
 <div class="row">
   {% for child, age in children %}
-
-  <div class="card col-3" style="width: 35%; margin: auto">
+  
+  <div class="card col-3 mb-4" style="width: 35%; margin: auto">
     <img
       class="card-img-top"
       src="static/matpat.png"
@@ -21,8 +21,13 @@ main %}
       <a href="#" class="btn btn-primary">See Profile</a>
     </div>
   </div>
-
+  
   {% endfor %}
+</div>
+<div class="row" style="margin-top: 20px;">
+  <div class="col-12 text-center">
+    <a href="/new" class="btn btn-success">Add New Student</a>
+  </div>
 </div>
 
 {% endblock %}
