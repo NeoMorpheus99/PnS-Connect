@@ -32,6 +32,15 @@ You can do a number of things here:
   ![Dark Mode](Usage3.png "Dark Mode")
 - Logout
 - Change your password
+- Add New Student
+
+### Add new Student(/new)
+
+- It shows the form to add the details of the new student
+ 
+- Add Student: By clicking on the Add Student button it add the students details to the list and also shows on the children page.
+
+
 
 ### Contributing
 
