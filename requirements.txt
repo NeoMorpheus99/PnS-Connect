@@ -1,2 +1,5 @@
 flask
 flask_session
+sqlalchemy
+sqlparse
+termcolor
